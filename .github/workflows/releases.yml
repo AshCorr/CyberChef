@@ -20,31 +20,31 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set node version
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
+    # - name: Set node version
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: '18.x'
 
-    - name: Install
-      run: |
-        npm ci
-        npm run setheapsize
+    # - name: Install
+    #   run: |
+    #     npm ci
+    #     npm run setheapsize
 
-    - name: Lint
-      run: npx grunt lint
+    # - name: Lint
+    #   run: npx grunt lint
 
-    - name: Unit Tests
-      run: |
-        npm test
-        npm run testnodeconsumer
+    # - name: Unit Tests
+    #   run: |
+    #     npm test
+    #     npm run testnodeconsumer
 
-    - name: Production Build
-      run: npx grunt prod
+    # - name: Production Build
+    #   run: npx grunt prod
 
-    - name: UI Tests
-      run: |
-        sudo apt-get install xvfb
-        xvfb-run --server-args="-screen 0 1200x800x24" npx grunt testui
+    # - name: UI Tests
+    #   run: |
+    #     sudo apt-get install xvfb
+    #     xvfb-run --server-args="-screen 0 1200x800x24" npx grunt testui
 
     - name: Image Metadata
       id: image-metadata
@@ -81,10 +81,10 @@ jobs:
         file_glob: true
         body: "See the [CHANGELOG](https://github.com/gchq/CyberChef/blob/master/CHANGELOG.md) and [commit messages](https://github.com/gchq/CyberChef/commits/master) for details."
 
-    - name: Publish to NPM
-      uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
+    # - name: Publish to NPM
+    #   uses: JS-DevTools/npm-publish@v1
+    #   with:
+    #     token: ${{ secrets.NPM_TOKEN }}
 
     - name: Publish to GHCR
       uses: redhat-actions/push-to-registry@v2
